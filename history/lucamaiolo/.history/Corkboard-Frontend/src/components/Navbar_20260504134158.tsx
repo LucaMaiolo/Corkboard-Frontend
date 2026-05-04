@@ -60,11 +60,9 @@ export function Navbar(): JSX.Element {
           gap: 12,
         }}
       >
-        {username && (
-          <span style={{ fontSize: "14px", color: "var(--cb-text-muted)" }}>
-            {username}
-          </span>
-        )}
+        <span style={{ fontSize: "14px", color: "var(--cb-text-muted)" }}>
+          {username ?? "Guest"}
+        </span>
         {!username && (
           <button onClick={() => setShowLogin((v) => !v)}>Login</button>
         )}
@@ -94,9 +92,6 @@ export function Navbar(): JSX.Element {
           />
         </div>
       )}
-      <NavLink to="/create" style={linkStyle}>
-        Create
-      </NavLink>
     </nav>
   );
 }

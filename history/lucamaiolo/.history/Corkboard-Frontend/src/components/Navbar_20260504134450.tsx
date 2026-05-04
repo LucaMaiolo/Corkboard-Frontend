@@ -94,9 +94,6 @@ export function Navbar(): JSX.Element {
           />
         </div>
       )}
-      <NavLink to="/create" style={linkStyle}>
-        Create
-      </NavLink>
     </nav>
   );
 }

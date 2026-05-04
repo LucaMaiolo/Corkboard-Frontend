@@ -1,6 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect, type JSX, type CSSProperties } from "react";
-import { LoginForm } from "./loginForm";
 
 export function Navbar(): JSX.Element {
   const [showLogin, setShowLogin] = useState(false);
@@ -10,8 +9,8 @@ export function Navbar(): JSX.Element {
   useEffect(() => {
     void fetch("http://localhost:1339/", { credentials: "include" })
       .then((response) => {
-        if (!response.ok) return null;
-        return response.json() as Promise<{ username: string }>;
+        if (!response.ok)
+          return response.json() as Promise<{ username: string }>;
       })
       .then((data) => {
         if (data) setUsername(data.username);
@@ -60,11 +59,9 @@ export function Navbar(): JSX.Element {
           gap: 12,
         }}
       >
-        {username && (
-          <span style={{ fontSize: "14px", color: "var(--cb-text-muted)" }}>
-            {username}
-          </span>
-        )}
+        <span style={{ fontSize: "14px", color: "var(--cb-text-muted)" }}>
+          {username ?? "Guest"}
+        </span>
         {!username && (
           <button onClick={() => setShowLogin((v) => !v)}>Login</button>
         )}
@@ -94,9 +91,6 @@ export function Navbar(): JSX.Element {
           />
         </div>
       )}
-      <NavLink to="/create" style={linkStyle}>
-        Create
-      </NavLink>
     </nav>
   );
 }
