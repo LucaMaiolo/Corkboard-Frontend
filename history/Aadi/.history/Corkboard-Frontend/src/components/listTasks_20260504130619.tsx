@@ -4,7 +4,8 @@ import { Card } from "./card";
 
 export function ListTasks({ tasks }: { tasks: Task[] }): JSX.Element {
   return (
-    <div style={{ maxWidth: "780px", margin: "0", padding: "0 20px" }}>
+    <div>
+      <h1>All Task</h1>
       <ul
         style={{
           listStyle: "none",

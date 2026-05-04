@@ -8,4 +8,4 @@ export interface Task {
   status: TaskStatus;
 }
 
-type TaskStatus = "Available" | "InProgress" | "Completed";
+type TaskStatus = "AVAILABLE" | "INPROGRESS" | "COMPLETED";

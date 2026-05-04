@@ -64,12 +64,13 @@ const baseConfig = {
 const tsConfig = {
   ...baseConfig,
   extends: [
-    tseslint.configs.recommended, // recommended TypeScript rules
+    tseslint.configs.recommendedTypeChecked, // enables strict type-checking rules
+    tseslint.configs.stylisticTypeChecked, // enables stylistic type-aware rules
   ],
   languageOptions: {
     ...baseConfig.languageOptions,
     parserOptions: {
-      projectService: false, // use TypeScript's project service for type info
+      projectService: true, // use TypeScript's project service for type info
       tsconfigRootDir: import.meta.dirname, // root directory for finding tsconfig.json
     },
   },
