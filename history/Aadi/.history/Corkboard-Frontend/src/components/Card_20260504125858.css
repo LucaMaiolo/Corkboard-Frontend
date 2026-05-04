@@ -1,13 +1,12 @@
 .card {
-  width: 100%;
   background: #fff;
   border: 1px solid #e4e2e0;
   border-radius: 10px;
-  padding: 20px 24px;
-  max-width: 480px;
+  padding: 14px 18px;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
 .card-top {
@@ -27,8 +26,8 @@
   font-weight: 500;
   padding: 3px 8px;
   border-radius: 6px;
-  background: #e6f1fb;
-  color: #185fa5;
+  background: #E6F1FB;
+  color: #185FA5;
 }
 
 .card-desc {
