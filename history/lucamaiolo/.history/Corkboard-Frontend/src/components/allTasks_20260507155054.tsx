@@ -17,7 +17,7 @@ export function AllTasks(): JSX.Element {
 }
 
 async function callGetAllTasks(setTasks: (val: Task[]) => void): Promise<void> {
-  const response = await fetch("http://localhost:1339/Tasks", {
+  const response = await fetch("http://localhost:1339/tasks", {
     method: "GET",
   });
   const result = (await response.json()) as Task[];

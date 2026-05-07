@@ -1,6 +1,6 @@
 import type { SubmitEvent, JSX } from "react";
 import { useState } from "react";
-import type { Task } from "./Task";
+import type { Task } from "./task";
 import "./AddTaskForm.css";
 
 export function AddTaskForm({

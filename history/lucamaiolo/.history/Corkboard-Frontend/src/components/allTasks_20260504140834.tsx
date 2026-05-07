@@ -1,6 +1,6 @@
 import { type JSX, useState, useEffect } from "react";
 import { ListTasks } from "./listTasks";
-import type { Task } from "./Task";
+import type { Task } from "./task";
 
 export function AllTasks(): JSX.Element {
   const [tasks, setTasks] = useState<Task[]>([]);
