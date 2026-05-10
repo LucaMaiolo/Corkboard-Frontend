@@ -1,0 +1,31 @@
+import { useEffect, useState, type JSX } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { Task } from "./Task";
+export function TaskDetail(): JSX.Element {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const [task, setTask] = useState<Task | null>(null);
+
+  useEffect(() => {
+    const fetchTask = async () => {
+      const response = await fetch(`http://localhost:1339/Tasks/${id}`);
+      const data = (await response.json()) as Task;
+      setTask(data);
+    };
+
+    void fetchTask();
+  }, [id]);
+
+  if (!task) return <p>Loading ...</p>;
+
+  return (
+    <>
+      <h1>{task.name}</h1>
+      <p>{task.description}</p>
+      <p>Location: {task.location}</p>
+      <p>Pay: ${task.pay}</p>
+      <p>Time Required: {task.timeInMins}</p>
+      <p>Status: {task.status}</p>
+    </>
+  );
+}

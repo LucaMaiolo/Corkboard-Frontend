@@ -5,7 +5,7 @@ import { Home } from "./pages/Home";
 import { AllTasksPage } from "./pages/AllTasksPage";
 import { CreatePage } from "./pages/CreatePage";
 import { LoginPage } from "./pages/LoginPage";
-import { TaskDetailPage } from "./pages/TaskDetailPage";
+
 import "./App.css";
 
 function App(): JSX.Element {
@@ -16,8 +16,6 @@ function App(): JSX.Element {
           <Route index element={<Home />} />
           <Route path="/all-tasks" element={<AllTasksPage />} />
           <Route path="/create" element={<CreatePage />} />
-          <Route path="tasks/:name" element={<TaskDetailPage />} />
-
           <Route path="/login" element={<LoginPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
