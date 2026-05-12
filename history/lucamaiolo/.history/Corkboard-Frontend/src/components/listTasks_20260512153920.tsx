@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import type { Task } from "./Task";
+import type { Task } from "./task";
 import { Card } from "./card";
 
 export function ListTasks({ tasks }: { tasks: Task[] }): JSX.Element {
