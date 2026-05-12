@@ -19,7 +19,7 @@ export function ListTasks({ tasks }: { tasks: Task[] }): JSX.Element {
         }}
       >
         {tasks.map((task) => (
-          <li key={task._id} onClick={() => navigate(`/tasks/${task._id}`)}>
+          <li key={task._id} onClick={() => navigate(`/task/${task._id}`)}>
             <Card
               title={task.name}
               location={task.location}
