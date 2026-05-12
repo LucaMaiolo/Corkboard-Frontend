@@ -1,4 +1,5 @@
 import type { JSX } from "react";
+import { Link } from "react-router-dom";
 import type { Task } from "./Task";
 import { Card } from "./card";
 import { useNavigate } from "react-router-dom";
@@ -27,6 +28,7 @@ export function ListTasks({ tasks }: { tasks: Task[] }): JSX.Element {
               timeInMins={task.timeInMins}
               status={task.status}
             />
+            <Link to={`/offers/${task._id}`}>View Offers</Link>
           </li>
         ))}
       </ul>
