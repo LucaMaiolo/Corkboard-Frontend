@@ -16,19 +16,6 @@ export function TaskDetail(): JSX.Element {
     void fetchTask();
   }, [name]);
 
-  const handleDelete = async () => {
-    const response = await fetch(`http://localhost:1339/Tasks/${name}`, {
-      method: "DELETE",
-    });
-
-    if (!response.ok) {
-      alert("Failed to delete task or Task not found");
-      return;
-    }
-
-    navigate("/all-tasks");
-  };
-
   if (!task) return <p>Loading ...</p>;
 
   return (
@@ -43,18 +30,7 @@ export function TaskDetail(): JSX.Element {
       <p>Time Required: {task.timeInMins}</p>
       <p>Status: {task.status}</p>
 
-      <button
-        onClick={() => navigate(`/update?name=${task.name}`)}
-        style={{ marginTop: "16px" }}
-      >
-        Edit Task
-      </button>
-      <button
-        onClick={handleDelete}
-        style={{ marginTop: "16px", marginLeft: "8px" }}
-      >
-        Delete Task
-      </button>
+      <button onClick
     </div>
   );
 }

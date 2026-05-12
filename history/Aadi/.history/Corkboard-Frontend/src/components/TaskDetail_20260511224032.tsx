@@ -49,12 +49,6 @@ export function TaskDetail(): JSX.Element {
       >
         Edit Task
       </button>
-      <button
-        onClick={handleDelete}
-        style={{ marginTop: "16px", marginLeft: "8px" }}
-      >
-        Delete Task
-      </button>
     </div>
   );
 }
