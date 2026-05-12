@@ -53,18 +53,8 @@ export function Navbar(): JSX.Element {
       <NavLink to="/create" style={linkStyle}>
         Create
       </NavLink>
-      <NavLink to="/update" style={linkStyle}>
-        Update
-      </NavLink>
 
-      <div
-        style={{
-          marginLeft: "auto",
-          display: "flex",
-          alignItems: "center",
-          gap: 12,
-        }}
-      >
+      <div style={linkStyle}>
         {username && (
           <>
             <span style={{ fontSize: "14px", color: "var(--cb-text-muted)" }}>
@@ -80,15 +70,11 @@ export function Navbar(): JSX.Element {
         )}
         {!username && (
           <>
-            <NavLink to="/login" style={linkStyle}>
+            <NavLink to="/login" style={{ fontSize: "14px" }}>
               Login
-            </NavLink>
-            <NavLink to="/register" style={{ fontSize: "14px" }}>
-             Register
             </NavLink>
           </>
         )}
-       
       </div>
     </nav>
   );

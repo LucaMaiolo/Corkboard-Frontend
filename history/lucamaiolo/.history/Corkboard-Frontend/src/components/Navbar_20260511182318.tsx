@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect, type JSX, type CSSProperties } from "react";
 import { LogoutButton } from "./logoutButton";
 
+
 export function Navbar(): JSX.Element {
   const [username, setUsername] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -53,9 +54,6 @@ export function Navbar(): JSX.Element {
       <NavLink to="/create" style={linkStyle}>
         Create
       </NavLink>
-      <NavLink to="/update" style={linkStyle}>
-        Update
-      </NavLink>
 
       <div
         style={{
@@ -66,29 +64,28 @@ export function Navbar(): JSX.Element {
         }}
       >
         {username && (
-          <>
-            <span style={{ fontSize: "14px", color: "var(--cb-text-muted)" }}>
-              {username}
-            </span>
-            <LogoutButton
-              onLogout={() => {
-                setUsername(null);
-                void navigate("/");
-              }}
-            />
+  <>
+    <span style={{ fontSize: "14px", color: "var(--cb-text-muted)" }}>
+      {username}
+    </span>
+    <LogoutButton onLogout={() => {
+      setUsername(null);
+      void navigate("/");
+    }} />
+  </>
+)}
+            >
+              Logout
+            </button>
           </>
         )}
         {!username && (
           <>
-            <NavLink to="/login" style={linkStyle}>
+            <NavLink to="/login" style={{ fontSize: "14px" }}>
               Login
-            </NavLink>
-            <NavLink to="/register" style={{ fontSize: "14px" }}>
-             Register
             </NavLink>
           </>
         )}
-       
       </div>
     </nav>
   );

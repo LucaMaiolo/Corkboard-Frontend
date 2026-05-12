@@ -16,7 +16,7 @@ export function LoginPage(): JSX.Element {
       }}
     >
       <h1>Sign In</h1>
-      <h1> </h1>
+
       <LoginForm
         onSuccess={() => {
           void navigate("/");

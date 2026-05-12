@@ -50,12 +50,6 @@ export function Navbar(): JSX.Element {
       <NavLink to="/all-tasks" style={linkStyle}>
         Tasks
       </NavLink>
-      <NavLink to="/create" style={linkStyle}>
-        Create
-      </NavLink>
-      <NavLink to="/update" style={linkStyle}>
-        Update
-      </NavLink>
 
       <div
         style={{
@@ -83,12 +77,11 @@ export function Navbar(): JSX.Element {
             <NavLink to="/login" style={linkStyle}>
               Login
             </NavLink>
-            <NavLink to="/register" style={{ fontSize: "14px" }}>
-             Register
-            </NavLink>
           </>
         )}
-       
+        <NavLink to="/register" style={{ fontSize: "14px" }}>
+          Register
+        </NavLink>
       </div>
     </nav>
   );

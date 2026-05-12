@@ -9,14 +9,27 @@ export function LoginPage(): JSX.Element {
     <div
       style={{
         display: "flex",
-        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         minHeight: "calc(100vh - 56px)",
       }}
     >
-      <h1>Sign In</h1>
-      <h1> </h1>
+      <div
+        style={{
+          background: "var(--cb-white)",
+          border: "1px solid var(--cb-gray-100)",
+          borderRadius: "var(--cb-radius-md)",
+          padding: "32px",
+          width: "100%",
+          maxWidth: "320px",
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+          boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+        }}
+      >
+        <h2 style={{ color: "var(--cb-text)", margin: 0 }}>Sign In</h2>
+      </div>
       <LoginForm
         onSuccess={() => {
           void navigate("/");

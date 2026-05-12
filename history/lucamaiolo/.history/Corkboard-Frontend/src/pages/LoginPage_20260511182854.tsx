@@ -9,14 +9,14 @@ export function LoginPage(): JSX.Element {
     <div
       style={{
         display: "flex",
-        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        alignContent: "right",
         minHeight: "calc(100vh - 56px)",
       }}
     >
-      <h1>Sign In</h1>
-      <h1> </h1>
+      <h2>Sign In</h2>
+
       <LoginForm
         onSuccess={() => {
           void navigate("/");

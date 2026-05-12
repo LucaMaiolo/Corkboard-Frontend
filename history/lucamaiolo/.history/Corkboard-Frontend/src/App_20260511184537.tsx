@@ -6,9 +6,6 @@ import { AllTasksPage } from "./pages/AllTasksPage";
 import { CreatePage } from "./pages/CreatePage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { LoginPage } from "./pages/LoginPage";
-import { TaskDetailPage } from "./pages/TaskDetailPage";
-import { UpdatePage } from "./pages/UpdatePage";
-import { OffersPage } from "./pages/OffersPage";
 
 import "./App.css";
 

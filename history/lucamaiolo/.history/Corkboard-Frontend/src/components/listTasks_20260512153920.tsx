@@ -1,10 +1,8 @@
 import type { JSX } from "react";
-import type { Task } from "./Task";
+import type { Task } from "./task";
 import { Card } from "./card";
-import { useNavigate } from "react-router-dom";
 
 export function ListTasks({ tasks }: { tasks: Task[] }): JSX.Element {
-  const navigate = useNavigate();
   return (
     <div style={{ maxWidth: "780px", margin: "0", padding: "0 20px" }}>
       <ul
@@ -19,15 +17,15 @@ export function ListTasks({ tasks }: { tasks: Task[] }): JSX.Element {
         }}
       >
         {tasks.map((task) => (
-          <li key={task._id} onClick={() => navigate(`/tasks/${task._id}`)}>
+          <li key={task._id}>
             <Card
               title={task.name}
+              description={task.description}
               location={task.location}
               pay={task.pay}
               timeInMins={task.timeInMins}
               status={task.status}
             />
-            <Link to={`/offers/${task._id}`}>View Offers</Link>
           </li>
         ))}
       </ul>
