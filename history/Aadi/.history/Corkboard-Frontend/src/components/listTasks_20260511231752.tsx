@@ -27,7 +27,6 @@ export function ListTasks({ tasks }: { tasks: Task[] }): JSX.Element {
               timeInMins={task.timeInMins}
               status={task.status}
             />
-            <Link to={`/offers/${task._id}`}>View Offers</Link>
           </li>
         ))}
       </ul>

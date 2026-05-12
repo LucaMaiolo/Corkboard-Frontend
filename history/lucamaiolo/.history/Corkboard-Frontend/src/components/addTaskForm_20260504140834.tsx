@@ -1,6 +1,6 @@
 import type { SubmitEvent, JSX } from "react";
 import { useState } from "react";
-import type { Task } from "./Task";
+import type { Task } from "./task";
 import "./AddTaskForm.css";
 
 export function AddTaskForm({
@@ -32,7 +32,7 @@ export function AddTaskForm({
         "Content-Type": "application/json; charset=UTF-8",
       },
     };
-    const response = await fetch("http://localhost:1339/tasks", requestOptions);
+    const response = await fetch("http://localhost:1339/Tasks", requestOptions);
     const result = await response.json();
     setAdded(result);
   };

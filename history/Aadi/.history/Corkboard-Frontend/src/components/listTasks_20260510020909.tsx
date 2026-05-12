@@ -19,7 +19,7 @@ export function ListTasks({ tasks }: { tasks: Task[] }): JSX.Element {
         }}
       >
         {tasks.map((task) => (
-          <li key={task._id} onClick={() => navigate(`/tasks/${task._id}`)}>
+          <li key={task._id} onClick={() => navigate(`/tasks/${task.name}`)}>
             <Card
               title={task.name}
               location={task.location}
@@ -27,7 +27,6 @@ export function ListTasks({ tasks }: { tasks: Task[] }): JSX.Element {
               timeInMins={task.timeInMins}
               status={task.status}
             />
-            <Link to={`/offers/${task._id}`}>View Offers</Link>
           </li>
         ))}
       </ul>

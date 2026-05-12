@@ -1,8 +1,9 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect, type JSX, type CSSProperties } from "react";
-import { LogoutButton } from "./logoutButton";
+import { LoginForm } from "./loginForm";
 
 export function Navbar(): JSX.Element {
+  const [showLogin, setShowLogin] = useState(false);
   const [username, setUsername] = useState<string | null>(null);
   const navigate = useNavigate();
 
@@ -50,13 +51,10 @@ export function Navbar(): JSX.Element {
       <NavLink to="/all-tasks" style={linkStyle}>
         Tasks
       </NavLink>
+
       <NavLink to="/create" style={linkStyle}>
         Create
       </NavLink>
-      <NavLink to="/update" style={linkStyle}>
-        Update
-      </NavLink>
-
       <div
         style={{
           marginLeft: "auto",
@@ -66,30 +64,39 @@ export function Navbar(): JSX.Element {
         }}
       >
         {username && (
-          <>
-            <span style={{ fontSize: "14px", color: "var(--cb-text-muted)" }}>
-              {username}
-            </span>
-            <LogoutButton
-              onLogout={() => {
-                setUsername(null);
-                void navigate("/");
-              }}
-            />
-          </>
+          <span style={{ fontSize: "14px", color: "var(--cb-text-muted)" }}>
+            {username}
+          </span>
         )}
         {!username && (
-          <>
-            <NavLink to="/login" style={linkStyle}>
-              Login
-            </NavLink>
-            <NavLink to="/register" style={{ fontSize: "14px" }}>
-             Register
-            </NavLink>
-          </>
+          <button onClick={() => setShowLogin((v) => !v)}>Login</button>
         )}
-       
       </div>
+
+      {showLogin && (
+        <div
+          style={{
+            position: "absolute",
+            top: "56px",
+            right: "24px",
+            background: "var(--cb-white)",
+            border: "1px solid var(--cb-gray-100)",
+            borderRadius: "var(--cb-radius-md)",
+            padding: "16px",
+            zIndex: 200,
+            width: 260,
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+          }}
+        >
+          <LoginForm
+            onSuccess={() => {
+              setShowLogin(false);
+              void navigate("/");
+              window.location.reload();
+            }}
+          />
+        </div>
+      )}
     </nav>
   );
 }
