@@ -1,9 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect, type JSX, type CSSProperties } from "react";
-import { LoginForm } from "./loginForm";
+import { LogoutButton } from "./logoutButton";
 
 export function Navbar(): JSX.Element {
-  const [showLogin, setShowLogin] = useState(false);
   const [username, setUsername] = useState<string | null>(null);
   const navigate = useNavigate();
 
@@ -61,42 +60,29 @@ export function Navbar(): JSX.Element {
         }}
       >
         {username && (
-          <span style={{ fontSize: "14px", color: "var(--cb-text-muted)" }}>
-            {username}
-          </span>
+          <>
+            <span style={{ fontSize: "14px", color: "var(--cb-text-muted)" }}>
+              {username}
+            </span>
+            <LogoutButton
+              onLogout={() => {
+                setUsername(null);
+                void navigate("/");
+              }}
+            />
+          </>
         )}
         {!username && (
-          <button onClick={() => setShowLogin((v) => !v)}>Login</button>
+          <>
+            <NavLink to="/login" style={linkStyle}>
+              Login
+            </NavLink>
+          </>
         )}
+        <NavLink to="/register" style={{ fontSize: "14px" }}>
+          Register
+        </NavLink>
       </div>
-
-      {showLogin && (
-        <div
-          style={{
-            position: "absolute",
-            top: "56px",
-            right: "24px",
-            background: "var(--cb-white)",
-            border: "1px solid var(--cb-gray-100)",
-            borderRadius: "var(--cb-radius-md)",
-            padding: "16px",
-            zIndex: 200,
-            width: 260,
-            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-          }}
-        >
-          <LoginForm
-            onSuccess={() => {
-              setShowLogin(false);
-              void navigate("/");
-              window.location.reload();
-            }}
-          />
-        </div>
-      )}
-      <NavLink to="/create" style={linkStyle}>
-        Create
-      </NavLink>
     </nav>
   );
 }

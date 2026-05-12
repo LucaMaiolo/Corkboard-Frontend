@@ -16,8 +16,10 @@ export function LoginForm({ onSuccess }: Props): JSX.Element {
       credentials: "include",
       body: JSON.stringify({ username, password }),
     });
-    if (response.ok) onSuccess();
-    else setError("Login failed. Please check your credentials.");
+    if (response.ok) {
+      onSuccess();
+      window.location.reload();
+    } else setError("Login failed. Please check your credentials.");
   }
 
   return (
