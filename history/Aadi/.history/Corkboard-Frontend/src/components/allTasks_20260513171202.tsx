@@ -30,7 +30,7 @@ export function AllTasks(): JSX.Element {
           width: "300px",
         }}
       />
-      <ListTasks tasks={filtered} />
+      <ListTasks tasks={tasks} />
     </>
   );
 }

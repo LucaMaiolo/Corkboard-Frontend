@@ -16,21 +16,7 @@ export function AllTasks(): JSX.Element {
 
   return (
     <>
-      <input
-        type="text"
-        placeholder="Search tasks..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        style={{
-          margin: "16px 20px",
-          padding: "8px",
-          fontSize: "16px",
-          borderRadius: "8px",
-          border: "1px solid #e4e2e0",
-          width: "300px",
-        }}
-      />
-      <ListTasks tasks={filtered} />
+      <ListTasks tasks={tasks} />
     </>
   );
 }
