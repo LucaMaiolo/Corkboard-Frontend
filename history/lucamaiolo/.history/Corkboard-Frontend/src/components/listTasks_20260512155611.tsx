@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import type { Task } from "./Task";
 import { Card } from "./card";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, type Link } from "react-router-dom";
 
 export function ListTasks({ tasks }: { tasks: Task[] }): JSX.Element {
   const navigate = useNavigate();
