@@ -1,5 +1,4 @@
 import { type JSX, type SubmitEvent, useState, useEffect, useRef } from "react";
-import toast from "react-hot-toast";
 
 const DRAFT_COOKIE_PREFIX = "offer_draft_";
 const DEBOUNCE_MS = 5000;
@@ -38,40 +37,16 @@ export const AddOfferForm = ({
 }): JSX.Element => {
   const [price, setPrice] = useState<number | "">("");
   const [message, setMessage] = useState("");
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // restore draft on mount
-  useEffect(() => {
-    const draft = loadDraft(gigId);
-    if (draft !== null) {
-      setPrice(draft.price);
-      setMessage(draft.message);
-    }
-  }, [gigId]);
-
-  const scheduleSave = (nextPrice: number | "", nextMessage: string): void => {
-    if (timerRef.current !== null) return;
-    timerRef.current = setTimeout(() => {
-      saveDraft(gigId, nextPrice, nextMessage);
-      timerRef.current = null;
-      toast.success("Draft saved");
-    }, DEBOUNCE_MS);
-  };
 
   const handleSubmit = async (event: SubmitEvent): Promise<void> => {
     // prevent the browser's default full-page reload on form submit
     event.preventDefault();
-    if (timerRef.current !== null) {
-      clearTimeout(timerRef.current);
-      timerRef.current = null;
-    }
     await fetch("http://localhost:1339/offers", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
       body: JSON.stringify({ gigId, submittedById, listerId, price: price as number, message: message || undefined }),
     });
-    clearDraft(gigId);
     setPrice("");
     setMessage("");
     onAdded();
@@ -86,11 +61,7 @@ export const AddOfferForm = ({
           placeholder="Price"
           min={0}
           value={price}
-          onChange={(event) => {
-            const next = Number(event.target.value);
-            setPrice(next);
-            scheduleSave(next, message);
-          }}
+          onChange={(event) => setPrice(Number(event.target.value))}
           required
         />
       </label>
@@ -101,11 +72,7 @@ export const AddOfferForm = ({
           type="text"
           placeholder="Message"
           value={message}
-          onChange={(event) => {
-            const next = event.target.value;
-            setMessage(next);
-            scheduleSave(price, next);
-          }}
+          onChange={(event) => setMessage(event.target.value)}
         />
       </label>
 
