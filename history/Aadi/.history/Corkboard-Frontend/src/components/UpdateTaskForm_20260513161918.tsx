@@ -84,6 +84,14 @@ export function UpdateTaskForm({
   if (loading) return <p>Loading...</p>;
   return (
     <form onSubmit={handleSubmit}>
+      <label htmlFor="oldName">Current Name</label>
+      <input
+        type="text"
+        placeholder="Current Name..."
+        value={oldName}
+        onChange={(e) => setOldName(e.target.value)}
+      />
+
       <label htmlFor="newName">New Name</label>
       <input
         type="text"

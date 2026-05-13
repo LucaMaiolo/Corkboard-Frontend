@@ -12,6 +12,7 @@ export function UpdateTaskForm({
   const [searchParams] = useSearchParams();
   const prefillId = searchParams.get("id");
 
+  const [oldName, setOldName] = useState<string>("");
   const [newName, setNewName] = useState<string>("");
   const [newDescription, setNewDescription] = useState<string>("");
   const [newLocation, setNewLocation] = useState<string>("");
@@ -32,6 +33,7 @@ export function UpdateTaskForm({
         return;
       }
       const task = (await response.json()) as Task;
+      setOldName(task.name);
       setNewName(task.name);
       setNewDescription(task.description);
       setNewLocation(task.location);
@@ -47,6 +49,7 @@ export function UpdateTaskForm({
     event.preventDefault();
 
     if (
+      !oldName ||
       !newName ||
       !newDescription ||
       !newLocation ||
@@ -58,7 +61,7 @@ export function UpdateTaskForm({
       return;
     }
 
-    const response = await fetch(`http://localhost:1339/tasks/${prefillId}`, {
+    const response = await fetch(`http://localhost:1339/tasks/${oldName}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -84,6 +87,14 @@ export function UpdateTaskForm({
   if (loading) return <p>Loading...</p>;
   return (
     <form onSubmit={handleSubmit}>
+      <label htmlFor="oldName">Current Name</label>
+      <input
+        type="text"
+        placeholder="Current Name..."
+        value={oldName}
+        onChange={(e) => setOldName(e.target.value)}
+      />
+
       <label htmlFor="newName">New Name</label>
       <input
         type="text"
