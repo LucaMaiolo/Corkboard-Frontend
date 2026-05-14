@@ -71,7 +71,6 @@ export function UpdateTaskForm({
         timeInMins: newTimeInMins,
         status: newStatus,
       }),
-      credentials: "include",
     });
 
     if (!response.ok) {
