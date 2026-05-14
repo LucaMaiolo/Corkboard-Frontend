@@ -18,21 +18,6 @@ export function TaskDetail(): JSX.Element {
     void fetchTask();
   }, [id]);
 
-  useEffect(() => {
-    void fetch("http://localhost:1339/users", { credentials: "include" })
-      .then((res) => {
-        setIsAdmin(res.status === 200);
-        return fetch("http://localhost:1339/", { credentials: "include" });
-      })
-      .then((res) => {
-        if (!res.ok) return null;
-        return res.json() as Promise<{ username: string }>;
-      })
-      .then((data) => {
-        if (data) setCurrentUser(data.username);
-      });
-  }, []);
-
   const handleDelete = async () => {
     const response = await fetch(`http://localhost:1339/tasks/${id}`, {
       method: "DELETE",
@@ -63,22 +48,18 @@ export function TaskDetail(): JSX.Element {
       <p>Time Required: {task.timeInMins}</p>
       <p>Status: {task.status}</p>
 
-      {canModify && (
-        <>
-          <button
-            onClick={() => navigate(`/update?id=${task._id}`)}
-            style={{ marginTop: "16px" }}
-          >
-            Edit Task
-          </button>
-          <button
-            onClick={handleDelete}
-            style={{ marginTop: "16px", marginLeft: "8px" }}
-          >
-            Delete Task
-          </button>
-        </>
-      )}
+      <button
+        onClick={() => navigate(`/update?id=${task._id}`)}
+        style={{ marginTop: "16px" }}
+      >
+        Edit Task
+      </button>
+      <button
+        onClick={handleDelete}
+        style={{ marginTop: "16px", marginLeft: "8px" }}
+      >
+        Delete Task
+      </button>
     </div>
   );
 }
