@@ -32,7 +32,6 @@ export function AddTaskForm({
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
       },
-      credentials: "include" as RequestCredentials,
     };
     const response = await fetch("http://localhost:1339/tasks", requestOptions);
     if (!response.ok) {
