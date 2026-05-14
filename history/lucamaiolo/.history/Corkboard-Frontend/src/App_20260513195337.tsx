@@ -28,7 +28,6 @@ function App(): JSX.Element {
           <Route path="/tasks/:id/update" element={<UpdatePage />} />
           <Route path="/offers" element={<OffersPage />} />
           <Route path="/users" element={<UsersPage />} />
-          <Route path="/users/:username/edit" element={<EditUserPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

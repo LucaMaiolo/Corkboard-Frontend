@@ -43,7 +43,6 @@ export function UsersPage(): JSX.Element {
     return (
       <div>
         <p>You must be logged in to view this page.</p>
-        <button onClick={() => navigate(-1)}>Go Back</button>
       </div>
     );
   }
