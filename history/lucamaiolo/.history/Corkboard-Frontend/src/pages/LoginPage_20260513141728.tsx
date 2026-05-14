@@ -18,13 +18,6 @@ export function LoginPage(): JSX.Element {
         minHeight: "calc(100vh - 56px)",
       }}
     >
-      <h1>Sign In</h1>
-      <h1> </h1>
-      <LoginForm
-        onSuccess={() => {
-          void navigate("/");
-        }}
-      />
       {justRegistered && (
         <div
           style={{
@@ -38,6 +31,14 @@ export function LoginPage(): JSX.Element {
           Account created successfully! Please sign in.
         </div>
       )}
+
+      <h1>Sign In</h1>
+      <h1> </h1>
+      <LoginForm
+        onSuccess={() => {
+          void navigate("/");
+        }}
+      />
     </div>
   );
 }

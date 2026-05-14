@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { Layout } from "./layouts/layout";
 import { Home } from "./pages/Home";
 import { AllTasksPage } from "./pages/AllTasksPage";
@@ -11,7 +11,6 @@ import { UpdatePage } from "./pages/UpdatePage";
 import { OffersPage } from "./pages/OffersPage";
 import { UsersPage } from "./pages/UsersPage";
 import { EditUserPage } from "./pages/EditUserPage";
-import { NotFoundPage } from "./pages/NotFoundPage";
 
 import "./App.css";
 
@@ -30,10 +29,8 @@ function App(): JSX.Element {
           <Route path="/offers" element={<OffersPage />} />
           <Route path="/users" element={<UsersPage />} />
           <Route path="/users/:username/edit" element={<EditUserPage />} />
-          <Route path="/update" element={<UpdatePage />} />
-          <Route path="/offers/:gigId" element={<OffersPage />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );

@@ -57,9 +57,6 @@ export function Navbar(): JSX.Element {
         Update
       </NavLink>
 
-      <NavLink to="/users" style={linkStyle}>
-        Users
-      </NavLink>
       <div
         style={{
           marginLeft: "auto",

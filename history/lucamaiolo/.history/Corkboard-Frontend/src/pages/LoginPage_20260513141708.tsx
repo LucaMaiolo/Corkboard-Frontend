@@ -18,6 +18,8 @@ export function LoginPage(): JSX.Element {
         minHeight: "calc(100vh - 56px)",
       }}
     >
+      {}
+
       <h1>Sign In</h1>
       <h1> </h1>
       <LoginForm
@@ -25,19 +27,6 @@ export function LoginPage(): JSX.Element {
           void navigate("/");
         }}
       />
-      {justRegistered && (
-        <div
-          style={{
-            background: "var(--cb-green-100)",
-            color: "var(--cb-green-700)",
-            padding: "12px 24px",
-            borderRadius: 4,
-            marginBottom: 16,
-          }}
-        >
-          Account created successfully! Please sign in.
-        </div>
-      )}
     </div>
   );
 }
