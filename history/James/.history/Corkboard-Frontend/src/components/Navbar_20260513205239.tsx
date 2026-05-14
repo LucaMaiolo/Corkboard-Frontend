@@ -1,4 +1,4 @@
-import { NavLink, useNavigate, Link } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect, type JSX, type CSSProperties } from "react";
 import { LogoutButton } from "./logoutButton";
 
@@ -53,10 +53,10 @@ export function Navbar(): JSX.Element {
       <NavLink to="/create" style={linkStyle}>
         Create
       </NavLink>
-
-      <NavLink to="/users" style={linkStyle}>
-        Users
+      <NavLink to="/update" style={linkStyle}>
+        Update
       </NavLink>
+
       <div
         style={{
           marginLeft: "auto",
@@ -70,16 +70,9 @@ export function Navbar(): JSX.Element {
             <NavLink to="/my-offers" style={linkStyle}>
               My Offers
             </NavLink>
-            <Link
-              to={`/users/${username}/edit`}
-              style={{
-                fontSize: "14px",
-                color: "var(--cb-text-muted)",
-                textDecoration: "none",
-              }}
-            >
+            <span style={{ fontSize: "14px", color: "var(--cb-text-muted)" }}>
               {username}
-            </Link>
+            </span>
             <LogoutButton
               onLogout={() => {
                 setUsername(null);
@@ -94,10 +87,11 @@ export function Navbar(): JSX.Element {
               Login
             </NavLink>
             <NavLink to="/register" style={{ fontSize: "14px" }}>
-              Register
+             Register
             </NavLink>
           </>
         )}
+       
       </div>
     </nav>
   );

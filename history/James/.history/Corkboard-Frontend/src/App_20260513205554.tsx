@@ -9,8 +9,6 @@ import { LoginPage } from "./pages/LoginPage";
 import { TaskDetailPage } from "./pages/TaskDetailPage";
 import { UpdatePage } from "./pages/UpdatePage";
 import { OffersPage } from "./pages/OffersPage";
-import { UsersPage } from "./pages/UsersPage";
-import { EditUserPage } from "./pages/EditUserPage";
 import { MyOffersPage } from "./pages/MyOffersPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
@@ -28,9 +26,6 @@ function App(): JSX.Element {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/tasks/:id" element={<TaskDetailPage />} />
           <Route path="/tasks/:id/update" element={<UpdatePage />} />
-          <Route path="/offers" element={<OffersPage />} />
-          <Route path="/users" element={<UsersPage />} />
-          <Route path="/users/:username/edit" element={<EditUserPage />} />
           <Route path="/update" element={<UpdatePage />} />
           <Route path="/offers/:gigId" element={<OffersPage />} />
           <Route path="/my-offers" element={<MyOffersPage />} />
