@@ -4,7 +4,6 @@ import type { Task } from "./Task";
 
 export function AllTasks(): JSX.Element {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [search, setSearch] = useState<string>("");
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
@@ -21,27 +20,5 @@ export function AllTasks(): JSX.Element {
     })();
   }, []);
 
-  const filtered = tasks.filter((task) =>
-    task.name.toLowerCase().includes(search.toLowerCase()),
-  );
-
-  return (
-    <>
-      <input
-        type="text"
-        placeholder="Search tasks..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        style={{
-          margin: "16px 20px",
-          padding: "8px",
-          fontSize: "16px",
-          borderRadius: "8px",
-          border: "1px solid #e4e2e0",
-          width: "300px",
-        }}
-      />
-      <ListTasks tasks={filtered} isAdmin={isAdmin} />
-    </>
-  );
+  return <ListTasks tasks={tasks} isAdmin={isAdmin} />;
 }
