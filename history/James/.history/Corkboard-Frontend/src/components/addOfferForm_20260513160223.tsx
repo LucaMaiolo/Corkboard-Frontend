@@ -39,8 +39,6 @@ export const AddOfferForm = ({
   const [price, setPrice] = useState<number | "">("");
   const [message, setMessage] = useState("");
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const priceRef = useRef<number | "">(price);
-  const messageRef = useRef<string>(message);
 
   // restore draft on mount
   useEffect(() => {
@@ -48,15 +46,13 @@ export const AddOfferForm = ({
     if (draft !== null) {
       setPrice(draft.price);
       setMessage(draft.message);
-      priceRef.current = draft.price;
-      messageRef.current = draft.message;
     }
   }, [gigId]);
 
-  const scheduleSave = (): void => {
+  const scheduleSave = (nextPrice: number | "", nextMessage: string): void => {
     if (timerRef.current !== null) return;
     timerRef.current = setTimeout(() => {
-      saveDraft(gigId, priceRef.current, messageRef.current);
+      saveDraft(gigId, nextPrice, nextMessage);
       timerRef.current = null;
       toast.success("Draft saved");
     }, DEBOUNCE_MS);
@@ -78,8 +74,6 @@ export const AddOfferForm = ({
     clearDraft(gigId);
     setPrice("");
     setMessage("");
-    priceRef.current = "";
-    messageRef.current = "";
     onAdded();
   };
 
@@ -95,8 +89,7 @@ export const AddOfferForm = ({
           onChange={(event) => {
             const next = Number(event.target.value);
             setPrice(next);
-            priceRef.current = next;
-            scheduleSave();
+            scheduleSave(next, message);
           }}
           required
         />
@@ -111,8 +104,7 @@ export const AddOfferForm = ({
           onChange={(event) => {
             const next = event.target.value;
             setMessage(next);
-            messageRef.current = next;
-            scheduleSave();
+            scheduleSave(price, next);
           }}
         />
       </label>
