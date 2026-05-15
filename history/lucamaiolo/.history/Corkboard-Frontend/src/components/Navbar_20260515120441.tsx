@@ -59,12 +59,9 @@ export function Navbar(): JSX.Element {
       <NavLink to="/all-tasks" style={linkStyle}>
         Tasks
       </NavLink>
-
-      {username && (
-        <NavLink to="/create" style={linkStyle}>
-          Post Task
-        </NavLink>
-      )}
+      <NavLink to="/create" style={linkStyle}>
+        Post-Task
+      </NavLink>
 
       {isAdmin && (
         <NavLink to="/users" style={linkStyle}>

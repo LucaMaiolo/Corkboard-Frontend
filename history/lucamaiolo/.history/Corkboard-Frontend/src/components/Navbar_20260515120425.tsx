@@ -5,7 +5,6 @@ import { LogoutButton } from "./logoutButton";
 export function Navbar(): JSX.Element {
   const [username, setUsername] = useState<string | null>(null);
   const navigate = useNavigate();
-  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     void fetch("http://localhost:1339/", { credentials: "include" })
@@ -59,18 +58,13 @@ export function Navbar(): JSX.Element {
       <NavLink to="/all-tasks" style={linkStyle}>
         Tasks
       </NavLink>
+      <NavLink to="/create" style={linkStyle}>
+        Post-Task
+      </NavLink>
 
-      {username && (
-        <NavLink to="/create" style={linkStyle}>
-          Post Task
-        </NavLink>
-      )}
-
-      {isAdmin && (
-        <NavLink to="/users" style={linkStyle}>
-          Users
-        </NavLink>
-      )}
+      <NavLink to="/users" style={linkStyle}>
+        Users
+      </NavLink>
       <div
         style={{
           marginLeft: "auto",
