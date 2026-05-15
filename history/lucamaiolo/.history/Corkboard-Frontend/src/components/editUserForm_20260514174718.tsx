@@ -1,5 +1,5 @@
 import { type JSX, useState } from "react";
-import { DeleteUserButton } from "./deleteUserButton";
+import { DeleteUserButton } from "./DeleteUserButton";
 
 import "./editUserForm.css";
 interface EditUserFormProps {
@@ -102,14 +102,6 @@ export function EditUserForm({
         onChange={(e) => setBirthday(e.target.value)}
       />
       <button onClick={() => void handleSubmit()}>Save Changes</button>
-
-      {isAdmin && (
-        <DeleteUserButton
-          username={username}
-          onSuccess={onSuccess}
-          onError={(msg) => setError(msg)}
-        />
-      )}
     </div>
   );
 }

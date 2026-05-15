@@ -103,13 +103,11 @@ export function EditUserForm({
       />
       <button onClick={() => void handleSubmit()}>Save Changes</button>
 
-      {isAdmin && (
-        <DeleteUserButton
-          username={username}
-          onSuccess={onSuccess}
-          onError={(msg) => setError(msg)}
-        />
-      )}
+      <DeleteUserButton
+        username={username}
+        onSuccess={onSuccess}
+        onError={(msg) => setError(msg)}
+      />
     </div>
   );
 }

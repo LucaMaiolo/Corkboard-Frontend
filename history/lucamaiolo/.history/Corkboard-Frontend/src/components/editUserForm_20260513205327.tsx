@@ -1,6 +1,4 @@
 import { type JSX, useState } from "react";
-import { DeleteUserButton } from "./deleteUserButton";
-
 import "./editUserForm.css";
 interface EditUserFormProps {
   username: string;
@@ -102,14 +100,6 @@ export function EditUserForm({
         onChange={(e) => setBirthday(e.target.value)}
       />
       <button onClick={() => void handleSubmit()}>Save Changes</button>
-
-      {isAdmin && (
-        <DeleteUserButton
-          username={username}
-          onSuccess={onSuccess}
-          onError={(msg) => setError(msg)}
-        />
-      )}
     </div>
   );
 }
