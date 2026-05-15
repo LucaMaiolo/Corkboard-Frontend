@@ -1,0 +1,37 @@
+.edit-user-page {
+    padding: 32px 24px;
+    max-width: 520px;
+  }
+  
+  .edit-user-page h1 {
+    margin-bottom: 6px;
+  }
+  
+  .edit-user-subtitle {
+    font-size: 13px;
+    color: var(--cb-text-muted);
+    margin-bottom: 24px;
+  }
+  
+  .edit-user-back {
+    background: none;
+    border: none;
+    color: var(--cb-orange);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  .edit-user-back:hover {
+    color: var(--cb-orange-dark);
+  }
+  
+  .edit-user-message {
+    padding: 32px;
+    color: var(--cb-text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }

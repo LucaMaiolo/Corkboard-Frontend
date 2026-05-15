@@ -1,0 +1,31 @@
+.delete-btn {
+    margin-top: 8px;
+    padding: 10px;
+    background: none;
+    color: #c0392b;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid #c0392b;
+    border-radius: var(--cb-radius-sm);
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    background: #fdf0f0;
+  }
+  
+  .delete-btn-confirm {
+    margin-top: 8px;
+    padding: 10px;
+    background: #c0392b;
+    color: var(--cb-white);
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: var(--cb-radius-sm);
+    cursor: pointer;
+  }
+  
+  .delete-btn-confirm:hover {
+    background: #a93226;
+  }
