@@ -1,19 +1,9 @@
 import type { JSX } from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 /** Main components for our home page */
 export function Home(): JSX.Element {
   const [username, setUsername] = useState<string | null>(null);
-  useEffect(() => {
-    void fetch("http://localhost:1339/", { credentials: "include" })
-      .then((response) => {
-        if (!response.ok) return null;
-        return response.json() as Promise<{ username: string }>;
-      })
-      .then((data) => {
-        if (data) setUsername(data.username);
-      });
-  }, []);
   return (
     <div
       style={{
@@ -83,40 +73,22 @@ export function Home(): JSX.Element {
           >
             Browse Tasks
           </Link>
-          {username && (
-            <Link
-              to="/create"
-              style={{
-                padding: "12px 28px",
-                background: "#fff",
-                color: "#1a1714",
-                borderRadius: "8px",
-                textDecoration: "none",
-                fontWeight: 600,
-                fontSize: "14px",
-                border: "1.5px solid #e8e4df",
-              }}
-            >
-              Post a Task
-            </Link>
-          )}
-          {!username && (
-            <Link
-              to="/login"
-              style={{
-                padding: "12px 28px",
-                background: "#fff",
-                color: "#1a1714",
-                borderRadius: "8px",
-                textDecoration: "none",
-                fontWeight: 600,
-                fontSize: "14px",
-                border: "1.5px solid #e8e4df",
-              }}
-            >
-              Login
-            </Link>
-          )}
+
+          <Link
+            to="/create"
+            style={{
+              padding: "12px 28px",
+              background: "#fff",
+              color: "#1a1714",
+              borderRadius: "8px",
+              textDecoration: "none",
+              fontWeight: 600,
+              fontSize: "14px",
+              border: "1.5px solid #e8e4df",
+            }}
+          >
+            Post a Task
+          </Link>
         </div>
       </div>
     </div>

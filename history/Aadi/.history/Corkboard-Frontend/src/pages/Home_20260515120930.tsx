@@ -114,7 +114,7 @@ export function Home(): JSX.Element {
                 border: "1.5px solid #e8e4df",
               }}
             >
-              Login
+              Post a Task
             </Link>
           )}
         </div>

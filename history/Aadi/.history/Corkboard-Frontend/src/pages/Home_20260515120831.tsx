@@ -100,23 +100,6 @@ export function Home(): JSX.Element {
               Post a Task
             </Link>
           )}
-          {!username && (
-            <Link
-              to="/login"
-              style={{
-                padding: "12px 28px",
-                background: "#fff",
-                color: "#1a1714",
-                borderRadius: "8px",
-                textDecoration: "none",
-                fontWeight: 600,
-                fontSize: "14px",
-                border: "1.5px solid #e8e4df",
-              }}
-            >
-              Login
-            </Link>
-          )}
         </div>
       </div>
     </div>
