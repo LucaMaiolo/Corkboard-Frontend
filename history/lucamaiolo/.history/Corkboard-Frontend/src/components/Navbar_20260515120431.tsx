@@ -63,11 +63,9 @@ export function Navbar(): JSX.Element {
         Post-Task
       </NavLink>
 
-      {isAdmin && (
-        <NavLink to="/users" style={linkStyle}>
-          Users
-        </NavLink>
-      )}
+      <NavLink to="/users" style={linkStyle}>
+        Users
+      </NavLink>
       <div
         style={{
           marginLeft: "auto",
