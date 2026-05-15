@@ -99,15 +99,27 @@ export function TaskDetail(): JSX.Element {
         </div>
 
         <div className="task-detail-actions">
-          <button
-            className="btn btn-primary"
-            onClick={() => navigate(`/update?id=${task._id}`)}
-          >
-            Edit Task
-          </button>
-          <button className="btn btn-danger" onClick={handleDelete}>
-            Delete Task
-          </button>
+          {canModify && (
+            <>
+              <button
+                className="btn btn-primary"
+                onClick={() => navigate(`/update?id=${task._id}`)}
+              >
+                Edit Task
+              </button>
+              <button className="btn btn-danger" onClick={handleDelete}>
+                Delete Task
+              </button>
+            </>
+          )}
+          {currentUser !== null && currentUser !== task.listerId && (
+            <button
+              className="btn"
+              onClick={() => navigate(`/offers/${task._id}`)}
+            >
+              Make an Offer
+            </button>
+          )}
         </div>
       </div>
     </div>
