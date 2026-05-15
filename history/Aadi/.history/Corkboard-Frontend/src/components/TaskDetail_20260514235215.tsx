@@ -12,22 +12,8 @@ export function TaskDetail(): JSX.Element {
       const response = await fetch(`http://localhost:1339/tasks/${id}`);
       const data = (await response.json()) as Task;
       setTask(data);
-
-      const raw = document.cookie
-        .split("; ")
-        .find((r) => r.startsWith("recentlyViewed="))
-        ?.split("=")[1];
-      const existing: string[] = raw
-        ? (JSON.parse(decodeURIComponent(raw)) as string[])
-        : [];
-
-      const updated = [
-        data._id,
-        ...existing.filter((i) => i !== data._id),
-      ].slice(0, 20);
-
-      document.cookie = `recentlyViewed=${encodeURIComponent(JSON.stringify(updated))}; path=/; max-age=${60 * 60 * 4}`;
     };
+
     void fetchTask();
   }, [id]);
 

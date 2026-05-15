@@ -52,7 +52,7 @@ export function AllTasks(): JSX.Element {
           padding: "10px 14px",
           fontSize: "14px",
           borderRadius: "8px",
-          border: "1.5px solid #e4e2e0",
+          border: "1.5px solid #e8e4df",
           width: "300px",
           fontFamily: "'DM Sans', sans-serif",
           outline: "none",

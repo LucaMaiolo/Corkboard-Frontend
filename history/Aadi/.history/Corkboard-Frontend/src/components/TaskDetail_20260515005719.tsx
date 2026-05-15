@@ -15,7 +15,7 @@ export function TaskDetail(): JSX.Element {
 
       const raw = document.cookie
         .split("; ")
-        .find((r) => r.startsWith("recentlyViewed="))
+        .find((r) => r.startsWith("recentlyViewed"))
         ?.split("=")[1];
       const existing: string[] = raw
         ? (JSON.parse(decodeURIComponent(raw)) as string[])

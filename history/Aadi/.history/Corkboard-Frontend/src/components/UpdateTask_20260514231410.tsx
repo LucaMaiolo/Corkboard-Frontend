@@ -1,26 +1,25 @@
 import type { JSX } from "react";
 import { useState, useRef } from "react";
+import { UpdateTaskForm } from "./UpdateTaskForm";
 import type { Task } from "./Task";
-import { AddTaskForm } from "./addTaskForm";
 import { DisplayTask } from "./displayTask";
 
-export function AddTask(): JSX.Element {
-  const [added, setAdded] = useState<Task>();
+export function UpdateTask(): JSX.Element {
+  const [updated, setUpdated] = useState<Task>();
   const resultRef = useRef<HTMLDivElement>(null);
 
   const handleAdded = (task: Task) => {
-    setAdded(task);
+    setUpdated(task);
     setTimeout(
       () => resultRef.current?.scrollIntoView({ behavior: "smooth" }),
       50,
     );
   };
-
   return (
     <>
-      <AddTaskForm setAdded={handleAdded} />
+      <UpdateTaskForm setUpdated={setUpdated} />
       <div ref={resultRef}>
-        <DisplayTask task={added} heading="Added Task" />
+        <DisplayTask task={updated} heading="Updated Task" />
       </div>
     </>
   );

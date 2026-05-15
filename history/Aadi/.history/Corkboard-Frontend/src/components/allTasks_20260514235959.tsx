@@ -48,15 +48,12 @@ export function AllTasks(): JSX.Element {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         style={{
-          margin: "20px",
-          padding: "10px 14px",
-          fontSize: "14px",
+          margin: "16px 20px",
+          padding: "8px",
+          fontSize: "16px",
           borderRadius: "8px",
-          border: "1.5px solid #e4e2e0",
+          border: "1px solid #e4e2e0",
           width: "300px",
-          fontFamily: "'DM Sans', sans-serif",
-          outline: "none",
-          background: "#faf9f7",
         }}
       />
       <ListTasks tasks={filtered} isAdmin={isAdmin} />
