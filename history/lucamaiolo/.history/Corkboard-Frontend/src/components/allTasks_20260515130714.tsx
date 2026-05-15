@@ -6,7 +6,6 @@ export function AllTasks(): JSX.Element {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [search, setSearch] = useState<string>("");
   const [isAdmin, setIsAdmin] = useState(false);
-  const [currentUser, setCurrentUser] = useState<string | null>(null);
 
   useEffect(() => {
     void (async () => {
@@ -23,7 +22,6 @@ export function AllTasks(): JSX.Element {
           isAdmin: boolean;
         };
         setIsAdmin(data.isAdmin);
-        setCurrentUser(data.username);
       }
     })();
   }, []);
@@ -61,7 +59,7 @@ export function AllTasks(): JSX.Element {
           background: "#faf9f7",
         }}
       />
-      <ListTasks tasks={filtered} isAdmin={isAdmin} currentUser={currentUser} />
+      <ListTasks tasks={filtered} isAdmin={isAdmin} />
     </div>
   );
 }

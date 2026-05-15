@@ -81,9 +81,6 @@ export function Navbar(): JSX.Element {
       >
         {username && (
           <>
-            <NavLink to="/my-tasks" style={linkStyle}>
-              My Tasks
-            </NavLink>
             <NavLink to="/my-offers" style={linkStyle}>
               My Offers
             </NavLink>

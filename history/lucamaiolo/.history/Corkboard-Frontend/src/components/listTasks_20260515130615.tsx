@@ -6,11 +6,9 @@ import { useNavigate, Link } from "react-router-dom";
 export function ListTasks({
   tasks,
   isAdmin,
-  currentUser,
 }: {
   tasks: Task[];
   isAdmin: boolean;
-  currentUser?: string | null;
 }): JSX.Element {
   const navigate = useNavigate();
 
@@ -57,7 +55,7 @@ export function ListTasks({
                   Recently viewed
                 </span>
               )}
-              {(isAdmin || currentUser === task.listerId) && (
+              {isAdmin && (
                 <Link
                   to={`/offers/${task._id}`}
                   onClick={(e) => e.stopPropagation()}

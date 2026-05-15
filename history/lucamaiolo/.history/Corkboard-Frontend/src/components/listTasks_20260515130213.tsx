@@ -6,11 +6,9 @@ import { useNavigate, Link } from "react-router-dom";
 export function ListTasks({
   tasks,
   isAdmin,
-  currentUser,
 }: {
   tasks: Task[];
   isAdmin: boolean;
-  currentUser?: string | null;
 }): JSX.Element {
   const navigate = useNavigate();
 
@@ -22,14 +20,14 @@ export function ListTasks({
     ? (JSON.parse(decodeURIComponent(raw)) as string[])
     : [];
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ maxWidth: "780px", margin: "0", padding: "0 20px" }}>
       <ul
         style={{
           listStyle: "none",
           padding: 0,
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-          gap: "12px",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "16px",
           width: "100%",
         }}
       >
@@ -57,7 +55,7 @@ export function ListTasks({
                   Recently viewed
                 </span>
               )}
-              {(isAdmin || currentUser === task.listerId) && (
+              {isAdmin && (
                 <Link
                   to={`/offers/${task._id}`}
                   onClick={(e) => e.stopPropagation()}
