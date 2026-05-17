@@ -69,12 +69,16 @@ export const AddOfferForm = ({
       clearTimeout(timerRef.current);
       timerRef.current = null;
     }
-    await fetch("http://localhost:1339/offers", {
+    const response = await fetch("http://localhost:1339/offers", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
       body: JSON.stringify({ gigId, submittedById, listerId, price: price as number, message: message || undefined }),
     });
+    if (!response.ok) {
+      toast.error(await response.text());
+      return;
+    }
     clearDraft(gigId);
     setPrice("");
     setMessage("");
